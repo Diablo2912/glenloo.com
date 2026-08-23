@@ -1,0 +1,196 @@
+.tl {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 2rem 0;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+.tl-heading {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 600;
+  color: #000;
+  margin: 0 0 2rem;
+}
+
+.tl-body {
+  position: relative;
+}
+
+.tl-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+  background: rgba(232, 234, 233, 0.12);
+}
+
+.tl-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 64px 1fr;
+  align-items: center;
+  min-height: 9rem;
+}
+
+.tl-col {
+  display: flex;
+}
+
+.tl-col-left {
+  justify-content: flex-end;
+  padding-right: 1.5rem;
+}
+
+.tl-col-right {
+  justify-content: flex-start;
+  padding-left: 1.5rem;
+}
+
+/* Marker */
+.tl-marker-col {
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+}
+
+.tl-marker {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #161b19;
+  border: 2px solid #e8eae9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.tl-marker-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tl-marker-initials {
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 9px;
+  font-weight: 600;
+  color: #e8eae9;
+  letter-spacing: 0.02em;
+}
+
+/* Period label */
+.tl-period {
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 13px;
+  color: #9ba39f;
+  white-space: nowrap;
+}
+
+/* Card */
+.tl-card {
+  max-width: 22rem;
+  background: #121615;
+  border: 1px solid rgba(232, 234, 233, 0.08);
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+}
+
+.tl-card-period {
+  display: none;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 12px;
+  color: #9ba39f;
+  margin: 0 0 0.4rem;
+}
+
+.tl-role {
+  font-size: 17px;
+  font-weight: 600;
+  color: #e8eae9;
+  margin: 0 0 0.15rem;
+}
+
+.tl-org {
+  font-size: 13px;
+  font-weight: 500;
+  color: #4ade80;
+  margin: 0 0 0.75rem;
+}
+
+.tl-bullets {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tl-bullets li {
+  font-size: 13px;
+  line-height: 1.55;
+  color: #c3c6c3;
+}
+
+.tl-bullets strong {
+  color: #e8eae9;
+  font-weight: 600;
+}
+
+.tl-bullets code {
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 12px;
+  background: #1c2220;
+  color: #e8eae9;
+  padding: 1px 6px;
+  border-radius: 4px;
+  border: 1px solid rgba(232, 234, 233, 0.1);
+}
+
+/* Mobile: collapse to a single left-aligned column */
+@media (max-width: 720px) {
+  .tl {
+    padding: 1.5rem 0;
+  }
+
+  .tl-line {
+    left: 22px;
+  }
+
+  .tl-row {
+    grid-template-columns: 44px 1fr;
+    grid-template-areas: "marker card";
+    align-items: flex-start;
+    gap: 0 1rem;
+    min-height: 0;
+    padding-bottom: 2rem;
+  }
+
+  .tl-marker-col {
+    grid-area: marker;
+  }
+
+  .tl-col-left,
+  .tl-col-right {
+    grid-area: card;
+    justify-content: flex-start;
+    padding: 0;
+  }
+
+  .tl-col-left:has(.tl-period),
+  .tl-col-right:has(.tl-period) {
+    display: none;
+  }
+
+  .tl-card {
+    max-width: none;
+  }
+
+  .tl-card-period {
+    display: block;
+  }
+}

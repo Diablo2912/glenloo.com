@@ -1,0 +1,33 @@
+.projects-section {
+  padding: 2rem 1.5rem;
+}
+
+.project-heading {
+  text-align: center;
+  font-size: 28px;
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 600;
+  color: #000;
+  margin: 0 0 2rem;
+}
+
+.projects-grid {
+  max-width: 72rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  justify-items: center;
+}
+
+@media (max-width: 900px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 620px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
