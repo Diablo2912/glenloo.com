@@ -1,3 +1,4 @@
+/* Whole card height */
 .project-card {
   position: relative;
   width: 100%;
@@ -11,6 +12,9 @@
   transform-style: preserve-3d;
   transition: transform 0.15s ease-out;
   will-change: transform;
+  display: flex;
+  flex-direction: column;
+  height: 500px;
 }
 
 .project-card-image-wrap {
@@ -30,6 +34,9 @@
 
 .project-card-body {
   padding: 0.25rem 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .project-card-title {
@@ -52,6 +59,8 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.9rem;
+  margin-top: auto;
+  padding-top: 0.5rem;
 }
 
 .project-card-tag {
