@@ -66,3 +66,23 @@ export const projects = [
     tags: ["Cybersecurity", "CTF", "CDDC"],
   },
 ];
+
+// Tech Stack 
+export const techStack = [
+  {
+    category: "Languages",
+    items: ["Python", "JavaScript", "TypeScript", "C", "Bash"],
+  },
+  {
+    category: "Frameworks & Libraries",
+    items: ["React", "Vue.js", "Node.js", "Express"],
+  },
+  {
+    category: "Security & Tools",
+    items: ["Docker", "Burp Suite", "Wireshark", "Ghidra", "Kong API Gateway"],
+  },
+  {
+    category: "Cloud & DevOps",
+    items: ["AWS", "Git", "Linux", "CI/CD"],
+  },
+];

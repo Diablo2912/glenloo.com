@@ -1,0 +1,102 @@
+.ts {
+  width: 100%;
+  /* background: #fafaf8; */
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  padding: 5rem 1.5rem;
+}
+
+.ts-container {
+  max-width: 48rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.ts-eyebrow {
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #0e5c56;
+  margin: 0 0 1rem;
+}
+
+.ts-heading {
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #1c1c1a;
+  margin: 0 0 2.5rem;
+}
+
+.ts-groups {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem 2.5rem;
+  text-align: left;
+}
+
+.ts-group {
+  min-width: 0;
+}
+
+.ts-category {
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #8a8778;
+  margin: 0 0 0.85rem;
+}
+
+.ts-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.ts-pill {
+  font-size: 13px;
+  font-weight: 500;
+  color: #1c1c1a;
+  background: #f1efe8;
+  border: 1px solid #e4e0d6;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.ts-pill:hover {
+  border-color: #0e5c56;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 620px) {
+  .ts-groups {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+}
+
+/* Dark mode overrides — applied when <html> has the .dark class */
+.dark .ts {
+  background: #0b0e0d;
+}
+
+.dark .ts-heading {
+  color: #e8eae9;
+}
+
+.dark .ts-category {
+  color: #9ba39f;
+}
+
+.dark .ts-pill {
+  color: #e8eae9;
+  background: #121615;
+  border-color: rgba(232, 234, 233, 0.1);
+}
+
+.dark .ts-pill:hover {
+  border-color: #4ade80;
+}
