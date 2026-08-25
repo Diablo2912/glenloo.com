@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X, ArrowUpRight, Sun, Moon } from "lucide-react";
 import "./Navbar.css";
 
 const LINKS = [
@@ -14,6 +14,12 @@ export default function Navbar() {
   const [hoverIdx, setHoverIdx] = useState(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [indicator, setIndicator] = useState({ left: 0, width: 0, ready: false });
+
+  const [darkMode, setDarkMode] = useState(() => {
+    const saved = localStorage.getItem("theme");
+    if (saved) return saved === "dark";
+    return window.matchMedia("(prefers-color-scheme: dark)").matches;
+  });
 
   const linkRefs = useRef([]);
   const trackRef = useRef(null);
@@ -38,6 +44,12 @@ export default function Navbar() {
     return () => window.removeEventListener("resize", onResize);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hoverIdx, activeIdx]);
+
+  // Apply/remove the .dark class on <html> and persist the choice
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", darkMode);
+    localStorage.setItem("theme", darkMode ? "dark" : "light");
+  }, [darkMode]);
 
   return (
     <header className="nb-header">
@@ -78,24 +90,28 @@ export default function Navbar() {
             />
           </nav>
 
-          {/* Button */}
-          {/* <div className="nb-cta-wrap">
-            <a href="#start" className="nb-cta">
-              Resume
-              <ArrowUpRight size={14} className="nb-cta-icon" />
-            </a>
-          </div> */}
+          <div className="nb-actions">
+            {/* Dark mode toggle */}
+            <button
+              type="button"
+              onClick={() => setDarkMode((prev) => !prev)}
+              className="nb-theme-toggle"
+              aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+            >
+              {darkMode ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
 
-          {/* Mobile toggle */}
-          <button
-            type="button"
-            aria-label={mobileOpen ? "Close menu" : "Open menu"}
-            aria-expanded={mobileOpen}
-            onClick={() => setMobileOpen((v) => !v)}
-            className="nb-toggle"
-          >
-            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
+            {/* Mobile toggle */}
+            <button
+              type="button"
+              aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileOpen}
+              onClick={() => setMobileOpen((v) => !v)}
+              className="nb-toggle"
+            >
+              {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -115,14 +131,14 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
-          <a
+          {/* <a
             href="#start"
             onClick={() => setMobileOpen(false)}
             className="nb-mobile-cta"
           >
             Resume
             <ArrowUpRight size={14} />
-          </a>
+          </a> */}
         </nav>
       </div>
     </header>

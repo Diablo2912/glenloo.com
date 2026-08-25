@@ -1,6 +1,6 @@
 // Text Type
 export const rotating_words = [
-  "Infocomm & Security student",
+  "Infocomm & Security Student",
   "Cybersecurity Engineer",
   "Full-Stack Developer",
 ];

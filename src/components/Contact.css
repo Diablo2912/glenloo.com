@@ -1,0 +1,119 @@
+.ct {
+  width: 100%;
+  /* background: #fafaf8; */
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  padding: 6rem 1.5rem;
+}
+
+.ct-container {
+  max-width: 34rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.ct-eyebrow {
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #0e5c56;
+  margin: 0 0 1rem;
+}
+
+.ct-heading {
+  font-size: 34px;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #1c1c1a;
+  margin: 0 0 1rem;
+}
+
+.ct-sub {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #5b594f;
+  margin: 0 0 2rem;
+}
+
+.ct-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  background: #1c1c1a;
+  color: #fafaf8;
+  padding: 0.85rem 1.5rem;
+  border-radius: 999px;
+  transition: background 0.2s ease;
+}
+
+.ct-cta:hover {
+  background: #0e5c56;
+}
+
+.ct-socials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.ct-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #e4e0d6;
+  color: #1c1c1a;
+  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.ct-social-link:hover {
+  border-color: #0e5c56;
+  color: #0e5c56;
+  transform: translateY(-2px);
+}
+
+@media (min-width: 640px) {
+  .ct-heading {
+    font-size: 40px;
+  }
+}
+
+/* Dark mode overrides — applied when <html> has the .dark class */
+.dark .ct {
+  background: #0b0e0d;
+}
+
+.dark .ct-heading {
+  color: #e8eae9;
+}
+
+.dark .ct-sub {
+  color: #9ba39f;
+}
+
+.dark .ct-cta {
+  background: #4ade80;
+  color: #0b0e0d;
+}
+
+.dark .ct-cta:hover {
+  background: #6ee89c;
+}
+
+.dark .ct-social-link {
+  border-color: rgba(232, 234, 233, 0.15);
+  color: #e8eae9;
+}
+
+.dark .ct-social-link:hover {
+  border-color: #4ade80;
+  color: #4ade80;
+}

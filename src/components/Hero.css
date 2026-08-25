@@ -2,6 +2,7 @@
   width: 100%;
   background: #fafaf8;
   font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* 100vh is viewport height - navbar height*/
   min-height: calc(100vh - 4rem); /* 4rem = navbar height (.nb-row) */
   display: flex;
   align-items: center;

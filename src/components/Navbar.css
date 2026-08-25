@@ -1,4 +1,7 @@
 .nb-header {
+  /* position: sticky;
+  top: 0;
+  z-index: 50; */
   width: 100%;
   background: #fafaf8;
   border-bottom: 1px solid #e4e0d6;
@@ -106,6 +109,33 @@
   transition: transform 0.2s ease;
 }
 
+/* Actions wrapper (theme toggle + mobile hamburger) */
+.nb-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nb-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid #e4e0d6;
+  background: none;
+  color: #1c1c1a;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.nb-theme-toggle:hover {
+  border-color: #0e5c56;
+  color: #0e5c56;
+  transform: rotate(15deg);
+}
+
 /* Mobile toggle */
 .nb-toggle {
   display: inline-flex;
@@ -181,4 +211,50 @@
   .nb-mobile-panel {
     display: none;
   }
+}
+
+/* Dark mode overrides — applied when <html> has the .dark class */
+.dark .nb-header {
+  background: #121615;
+  border-bottom-color: rgba(232, 234, 233, 0.1);
+}
+
+.dark .nb-brand-name {
+  color: #e8eae9;
+}
+
+.dark .nb-link {
+  color: #9ba39f;
+}
+
+.dark .nb-link:hover,
+.dark .nb-link-active {
+  color: #e8eae9;
+}
+
+.dark .nb-theme-toggle {
+  border-color: rgba(232, 234, 233, 0.15);
+  color: #e8eae9;
+}
+
+.dark .nb-theme-toggle:hover {
+  border-color: #4ade80;
+  color: #4ade80;
+}
+
+.dark .nb-toggle {
+  color: #e8eae9;
+}
+
+.dark .nb-mobile-nav {
+  border-top-color: rgba(232, 234, 233, 0.1);
+}
+
+.dark .nb-mobile-link {
+  color: #e8eae9;
+  border-bottom-color: rgba(232, 234, 233, 0.08);
+}
+
+.dark .nb-mobile-link-active {
+  color: #4ade80;
 }

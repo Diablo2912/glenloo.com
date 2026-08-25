@@ -15,14 +15,14 @@ export default function Hero() {
             text={rotating_words}
             typingSpeed={80}
             deletingSpeed={45}
-            pauseDuration={1400}
+            pauseDuration={1500}
             className="hero-rotator"
           />
         </h1>
 
         <div className="hero-socials">
           <a
-            href="https://github.com/your-username"
+            href="https://github.com/Diablo2912"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
@@ -31,7 +31,7 @@ export default function Hero() {
             <FaGithub size={20} />
           </a>
           <a
-            href="https://linkedin.com/in/your-username"
+            href="https://www.linkedin.com/in/glen-loo/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
@@ -40,7 +40,7 @@ export default function Hero() {
             <FaLinkedin size={20} />
           </a>
           <a
-            href="mailto:you@example.com"
+            href="glenloo2007@gmail.com"
             aria-label="Email"
             className="hero-social-link"
           >
