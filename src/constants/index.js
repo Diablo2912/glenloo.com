@@ -86,3 +86,9 @@ export const techStack = [
     items: ["AWS", "Git", "Linux", "CI/CD"],
   },
 ];
+
+// Awards
+export const awards = [
+  "NYP Director's List Y1 S2, Y2 S1, Y2 S2",
+  "Edusave Certificate of Academic Achievement 2025",
+];
