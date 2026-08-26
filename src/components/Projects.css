@@ -20,6 +20,15 @@
   justify-items: center;
 }
 
+/* Dark Mode*/
+.dark .projects-section {
+  background: #0b0e0d;
+}
+
+.dark .project-heading {
+  color: #e8eae9;
+} 
+
 @media (max-width: 900px) {
   .projects-grid {
     grid-template-columns: repeat(2, 1fr);

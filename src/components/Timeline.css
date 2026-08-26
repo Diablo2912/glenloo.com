@@ -9,7 +9,7 @@
   text-align: center;
   font-size: 28px;
   font-weight: 600;
-  color: #000;
+  color: #0b0e0d;
   margin: 0 0 2rem;
 }
 
@@ -24,7 +24,7 @@
   left: 50%;
   width: 2px;
   transform: translateX(-50%);
-  background: rgba(232, 234, 233, 0.12);
+  background: rgba(11, 14, 13, 0.12); /* tl line colour */
 }
 
 .tl-row {
@@ -60,8 +60,8 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: #161b19;
-  border: 2px solid #e8eae9;
+  background: #ffffff;
+  border: 2px solid #d8dbd9;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -79,7 +79,7 @@
   font-family: "JetBrains Mono", Consolas, monospace;
   font-size: 9px;
   font-weight: 600;
-  color: #e8eae9;
+  color: #3f4744;
   letter-spacing: 0.02em;
 }
 
@@ -87,38 +87,39 @@
 .tl-period {
   font-family: "JetBrains Mono", Consolas, monospace;
   font-size: 13px;
-  color: #9ba39f;
+  color: #6b7570; /* Date text colour */
   white-space: nowrap;
 }
 
 /* Card */
 .tl-card {
   max-width: 28rem;
-  background: #121615;
-  border: 1px solid rgba(232, 234, 233, 0.08);
+  background: #ffffff;
+  border: 1px solid rgba(11, 14, 13, 0.08);
   border-radius: 10px;
   padding: 1.25rem 1.5rem;
+  box-shadow: 0 1px 3px rgba(11, 14, 13, 0.06);
 }
 
 .tl-card-period {
   display: none;
   font-family: "JetBrains Mono", Consolas, monospace;
   font-size: 12px;
-  color: #9ba39f;
+  color: #6b7570;
   margin: 0 0 0.4rem;
 }
 
 .tl-role {
   font-size: 17px;
   font-weight: 600;
-  color: #e8eae9;
+  color: #111815;
   margin: 0 0 0.15rem;
 }
 
 .tl-org {
   font-size: 13px;
   font-weight: 500;
-  color: #4ade80;
+  color: #16a34a;
   margin: 0 0 0.75rem;
 }
 
@@ -133,21 +134,84 @@
 .tl-bullets li {
   font-size: 13px;
   line-height: 1.55;
-  color: #c3c6c3;
+  color: #4b5750;
 }
 
 .tl-bullets strong {
-  color: #e8eae9;
+  color: #111815;
   font-weight: 600;
 }
 
 .tl-bullets code {
   font-family: "JetBrains Mono", Consolas, monospace;
   font-size: 12px;
-  background: #1c2220;
-  color: #e8eae9;
+  background: #f0f2f1;
+  color: #111815;
   padding: 1px 6px;
   border-radius: 4px;
+  border: 1px solid rgba(11, 14, 13, 0.1);
+}
+
+/* Light mode (default) page background */
+.tl-page {
+  background-color: #f7f8f7;
+}
+
+/* Dark Mode */
+.dark {
+  background-color: #0b0e0d;
+}
+
+.dark .tl-heading {
+  color: #e8eae9;
+}
+
+.dark .tl-line {
+  background: rgba(232, 234, 233, 0.12); /* tl line colour */
+}
+
+.dark .tl-marker {
+  background: #161b19;
+  border: 2px solid #e8eae9;
+}
+
+.dark .tl-marker-initials {
+  color: #e8eae9;
+}
+
+.dark .tl-period {
+  color: #9ba39f; /* Date text colour */
+}
+
+.dark .tl-card {
+  background: #121615;
+  border: 1px solid rgba(232, 234, 233, 0.08);
+  box-shadow: none;
+}
+
+.dark .tl-card-period {
+  color: #9ba39f;
+}
+
+.dark .tl-role {
+  color: #e8eae9;
+}
+
+.dark .tl-org {
+  color: #4ade80;
+}
+
+.dark .tl-bullets li {
+  color: #c3c6c3;
+}
+
+.dark .tl-bullets strong {
+  color: #e8eae9;
+}
+
+.dark .tl-bullets code {
+  background: #1c2220;
+  color: #e8eae9;
   border: 1px solid rgba(232, 234, 233, 0.1);
 }
 
@@ -187,7 +251,7 @@
   }
 
   .tl-card {
-    max-width: none;
+    max-width: 350px;
   }
 
   .tl-card-period {

@@ -56,6 +56,7 @@
   margin-top: 1.5rem;
 }
 
+/* Icon logo */
 .hero-social-link {
   display: inline-flex;
   align-items: center;
@@ -68,6 +69,7 @@
   transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
+/* Icon logo hover */
 .hero-social-link:hover {
   border-color: #0e5c56;
   color: #0e5c56;
@@ -116,6 +118,26 @@
   color: #0e5c56;
 }
 
+/* Dark Mode */
+.dark .hero{
+  background: #141414;
+}
+
+.dark .hero-heading {
+  color: white;
+}
+
+.dark .hero-social-link {
+  color: white;
+}
+
+/* Icon logo border hover */
+.dark .hero-social-link:hover {
+  border-color: #4ade80;;
+}
+
+
+/* Mobile */
 @media (min-width: 640px) {
   .hero-heading {
     font-size: 56px;
