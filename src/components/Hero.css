@@ -1,8 +1,8 @@
 .hero {
+  position: relative;
   width: 100%;
   background: #fafaf8;
   font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-  /* 100vh is viewport height - navbar height*/
   min-height: calc(100vh - 4rem); /* 4rem = navbar height (.nb-row) */
   display: flex;
   align-items: center;
@@ -56,7 +56,6 @@
   margin-top: 1.5rem;
 }
 
-/* Icon logo */
 .hero-social-link {
   display: inline-flex;
   align-items: center;
@@ -69,7 +68,6 @@
   transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
-/* Icon logo hover */
 .hero-social-link:hover {
   border-color: #0e5c56;
   color: #0e5c56;
@@ -118,28 +116,112 @@
   color: #0e5c56;
 }
 
-/* Dark Mode */
-.dark .hero{
-  background: #141414;
-}
-
-.dark .hero-heading {
-  color: white;
-}
-
-.dark .hero-social-link {
-  color: white;
-}
-
-/* Icon logo border hover */
-.dark .hero-social-link:hover {
-  border-color: #4ade80;;
-}
-
-
-/* Mobile */
 @media (min-width: 640px) {
   .hero-heading {
     font-size: 56px;
   }
+}
+
+/* Scroll-down indicator */
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  animation: hero-scroll-bounce 2s ease-in-out infinite;
+}
+
+.hero-scroll-mouse {
+  display: block;
+  width: 26px;
+  height: 42px;
+  border: 2px solid #8a8778;
+  border-radius: 999px;
+  position: relative;
+  transition: border-color 0.2s ease;
+}
+
+.hero-scroll-indicator:hover .hero-scroll-mouse {
+  border-color: #0e5c56;
+}
+
+.hero-scroll-dot {
+  position: absolute;
+  top: 7px;
+  left: 50%;
+  width: 4px;
+  height: 8px;
+  background: #8a8778;
+  border-radius: 999px;
+  transform: translateX(-50%);
+  animation: hero-scroll-dot 1.8s ease-in-out infinite;
+}
+
+.hero-scroll-indicator:hover .hero-scroll-dot {
+  background: #0e5c56;
+}
+
+@keyframes hero-scroll-bounce {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(6px);
+  }
+}
+
+@keyframes hero-scroll-dot {
+  0% {
+    opacity: 1;
+    top: 7px;
+  }
+  70% {
+    opacity: 0;
+    top: 22px;
+  }
+  100% {
+    opacity: 0;
+    top: 7px;
+  }
+}
+
+/* Dark mode overrides — applied when <html> has the .dark class */
+.dark .hero {
+  background: #0b0e0d;
+}
+
+.dark .hero-heading {
+  color: #e8eae9;
+}
+
+.dark .hero-sub {
+  color: #9ba39f;
+}
+
+.dark .hero-social-link {
+  border-color: rgba(232, 234, 233, 0.15);
+  color: #e8eae9;
+}
+
+.dark .hero-social-link:hover {
+  border-color: #4ade80;
+  color: #4ade80;
+}
+
+.dark .hero-scroll-mouse {
+  border-color: rgba(232, 234, 233, 0.3);
+}
+
+.dark .hero-scroll-dot {
+  background: rgba(232, 234, 233, 0.6);
+}
+
+.dark .hero-scroll-indicator:hover .hero-scroll-mouse {
+  border-color: #4ade80;
+}
+
+.dark .hero-scroll-indicator:hover .hero-scroll-dot {
+  background: #4ade80;
 }

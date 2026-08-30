@@ -6,7 +6,7 @@ import "./Hero.css";
 
 export default function Hero() {
   return (
-    <section className="hero" id="hero">
+    <section className="hero">
       <div className="hero-container">
         <h1 className="hero-heading">
           Hi, I'm Glen I'm a
@@ -15,14 +15,14 @@ export default function Hero() {
             text={rotating_words}
             typingSpeed={80}
             deletingSpeed={45}
-            pauseDuration={1500}
+            pauseDuration={1400}
             className="hero-rotator"
           />
         </h1>
 
         <div className="hero-socials">
           <a
-            href="https://github.com/Diablo2912"
+            href="https://github.com/your-username"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
@@ -31,7 +31,7 @@ export default function Hero() {
             <FaGithub size={20} />
           </a>
           <a
-            href="https://www.linkedin.com/in/glen-loo/"
+            href="https://linkedin.com/in/your-username"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
@@ -40,7 +40,7 @@ export default function Hero() {
             <FaLinkedin size={20} />
           </a>
           <a
-            href="glenloo2007@gmail.com"
+            href="mailto:you@example.com"
             aria-label="Email"
             className="hero-social-link"
           >
@@ -48,6 +48,16 @@ export default function Hero() {
           </a>
         </div>
       </div>
+
+      <a
+        href="#experience"
+        className="hero-scroll-indicator"
+        aria-label="Scroll to Experience section"
+      >
+        <span className="hero-scroll-mouse">
+          <span className="hero-scroll-dot" />
+        </span>
+      </a>
     </section>
   );
 }
