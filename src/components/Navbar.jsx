@@ -23,6 +23,20 @@ export default function Navbar() {
 
   const linkRefs = useRef([]);
   const trackRef = useRef(null);
+  const clickLock = useRef(false);
+  const clickLockTimeout = useRef(null);
+
+  // Called when a nav link is clicked: lock the scrollspy so the
+  // in-flight smooth-scroll animation can't fight the click and
+  // flip activeIdx back to the wrong section mid-transition.
+  const handleNavClick = (idx) => {
+    clickLock.current = true;
+    setActiveIdx(idx);
+    clearTimeout(clickLockTimeout.current);
+    clickLockTimeout.current = setTimeout(() => {
+      clickLock.current = false;
+    }, 1000); // long enough to cover the smooth-scroll animation
+  };
 
   const measure = (idx) => {
     const el = idx != null ? linkRefs.current[idx] : null;
@@ -67,6 +81,11 @@ export default function Navbar() {
 
     const observer = new IntersectionObserver(
       (entries) => {
+        // Ignore intersection updates while a click just triggered a
+        // smooth-scroll — otherwise mid-animation frames can overwrite
+        // the section the user actually clicked on.
+        if (clickLock.current) return;
+
         // Among sections currently intersecting the "band" below the
         // navbar, pick the one closest to the top of that band.
         const visible = entries
@@ -92,7 +111,10 @@ export default function Navbar() {
     );
 
     sectionEls.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      clearTimeout(clickLockTimeout.current);
+    };
   }, []);
 
   return (
@@ -116,7 +138,7 @@ export default function Navbar() {
                 ref={(el) => (linkRefs.current[idx] = el)}
                 href={link.href}
                 onMouseEnter={() => setHoverIdx(idx)}
-                onClick={() => setActiveIdx(idx)}
+                onClick={() => handleNavClick(idx)}
                 className={`nb-link ${idx === activeIdx ? "nb-link-active" : ""}`}
               >
                 {link.label}
@@ -167,7 +189,7 @@ export default function Navbar() {
               key={link.label}
               href={link.href}
               onClick={() => {
-                setActiveIdx(idx);
+                handleNavClick(idx);
                 setMobileOpen(false);
               }}
               className={`nb-mobile-link ${idx === activeIdx ? "nb-mobile-link-active" : ""}`}
