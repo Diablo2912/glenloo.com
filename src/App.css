@@ -1,3 +1,4 @@
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Leave a space after clcking navbar to still show header */
 }

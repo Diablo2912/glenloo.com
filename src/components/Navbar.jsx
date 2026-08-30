@@ -10,7 +10,7 @@ const LINKS = [
 ];
 
 export default function Navbar() {
-  const [activeIdx, setActiveIdx] = useState(0);
+  const [activeIdx, setActiveIdx] = useState(null);
   const [hoverIdx, setHoverIdx] = useState(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [indicator, setIndicator] = useState({ left: 0, width: 0, ready: false });
@@ -25,9 +25,14 @@ export default function Navbar() {
   const trackRef = useRef(null);
 
   const measure = (idx) => {
-    const el = linkRefs.current[idx];
+    const el = idx != null ? linkRefs.current[idx] : null;
     const track = trackRef.current;
-    if (!el || !track) return;
+    if (!el || !track) {
+      // No active/hovered link — hide the indicator instead of
+      // leaving it frozen at its last position.
+      setIndicator((prev) => ({ ...prev, ready: false }));
+      return;
+    }
     const elRect = el.getBoundingClientRect();
     const trackRect = track.getBoundingClientRect();
     setIndicator({
@@ -50,6 +55,45 @@ export default function Navbar() {
     document.documentElement.classList.toggle("dark", darkMode);
     localStorage.setItem("theme", darkMode ? "dark" : "light");
   }, [darkMode]);
+
+  // Scrollspy: highlight whichever section is actually in view,
+  // not just whichever link was last clicked.
+  useEffect(() => {
+    const sectionEls = LINKS.map((link) =>
+      document.querySelector(link.href)
+    ).filter(Boolean);
+
+    if (!sectionEls.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        // Among sections currently intersecting the "band" below the
+        // navbar, pick the one closest to the top of that band.
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+
+        if (visible.length > 0) {
+          const topId = visible[0].target.id;
+          const idx = LINKS.findIndex((link) => link.href === `#${topId}`);
+          if (idx !== -1) {
+            setActiveIdx(idx);
+          }
+        } else {
+          setActiveIdx(null);
+        }
+      },
+      {
+        // Treat a section as "current" once it's within this band:
+        // starts just below the sticky navbar, ends 60% down the viewport.
+        rootMargin: "-72px 0px -60% 0px",
+        threshold: 0,
+      }
+    );
+
+    sectionEls.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <header className="nb-header">
@@ -131,14 +175,14 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
-          {/* <a
+          <a
             href="#start"
             onClick={() => setMobileOpen(false)}
             className="nb-mobile-cta"
           >
             Resume
             <ArrowUpRight size={14} />
-          </a> */}
+          </a>
         </nav>
       </div>
     </header>
