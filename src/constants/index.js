@@ -36,7 +36,12 @@ export const experience = [
     org: "Chua Chu Kang Secondary School",
     period: "Aug 2024 - Feb 2025",
     bullets: [
-      "Drove R&D for proactive cybersecurity solutions to safeguard client infrastructure.",
+      "CGPA: **4.0/4.0** (Top in cohort)",
+      "Awards: CSIT Gold Medal & Prize, Group-IB Prize",
+      "Scholarship: DSTA Polytechnic Digital Scholar",
+      "Leadership: President, NullSec: Led CTFs, cybersecurity workshops, and YCEP in collaboration with CSA.",
+      "Competitions: WorldSkills Singapore 2025 — 3rd; CDDC 2024 — 3rd; GreyCTF 2025 — 6th",
+      "Represented Singapore at the [Global Cybersecurity Camp 2025](https://example.com/gcc-2025), winning the \"Best Project\" award",
     ],
   },
 ];

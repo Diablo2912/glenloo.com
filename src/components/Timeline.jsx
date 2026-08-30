@@ -83,15 +83,30 @@ function TimelineCard({ item, align }) {
   );
 }
 
-// Turns `code` into <code> and **bold** into <strong> within a bullet string
+// Turns `code` into <code>, **bold** into <strong>, and [text](url) into <a>
 function renderInline(text) {
-  const parts = text.split(/(`[^`]+`|\*\*[^*]+\*\*)/g);
+  const parts = text.split(/(`[^`]+`|\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g);
   return parts.map((part, i) => {
     if (part.startsWith("`") && part.endsWith("`")) {
       return <code key={i}>{part.slice(1, -1)}</code>;
     }
     if (part.startsWith("**") && part.endsWith("**")) {
       return <strong key={i}>{part.slice(2, -2)}</strong>;
+    }
+    const linkMatch = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+    if (linkMatch) {
+      const [, label, url] = linkMatch;
+      return (
+        <a
+          key={i}
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="tl-bullet-link"
+        >
+          {label}
+        </a>
+      );
     }
     return <span key={i}>{part}</span>;
   });

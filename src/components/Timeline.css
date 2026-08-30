@@ -152,6 +152,24 @@
   border: 1px solid rgba(11, 14, 13, 0.1);
 }
 
+.tl-bullet-link {
+  color: #16a34a;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.tl-bullet-link:hover {
+  color: #15803d;
+}
+
+.dark .tl-bullet-link {
+  color: #4ade80;
+}
+
+.dark .tl-bullet-link:hover {
+  color: #86efac;
+}
+
 /* Light mode (default) page background */
 .tl-page {
   background-color: #f7f8f7;
