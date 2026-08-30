@@ -13,6 +13,7 @@ const TAG_COLORS = ["#5dd0e8", "#7ee787", "#f778ba", "#f0b429", "#a78bfa"];
  * - title: string
  * - description: string
  * - tags: string[]       rendered as "./tag", colors auto-cycled
+ * - link: string         url to open in a new tab when the card is clicked
  * - maxTilt: number      max tilt rotation in degrees (default 10)
  * - scale: number        hover scale factor (default 1.02)
  * - glare: boolean       show the cursor-following glare (default true)
@@ -22,6 +23,7 @@ export default function ProjectCard({
   title,
   description,
   tags = [],
+  link,
   maxTilt = 10,
   scale = 1.02,
   glare = true,
@@ -66,13 +68,28 @@ export default function ProjectCard({
     setGlareStyle({ opacity: 0 });
   };
 
+  const handleClick = () => {
+    if (link) {
+      window.open(link, "_blank", "noopener,noreferrer");
+    }
+  };
+
   return (
     <div
       ref={cardRef}
       className="project-card"
-      style={{ transform }}
+      style={{ transform, cursor: link ? "pointer" : "default" }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      onClick={handleClick}
+      role={link ? "link" : undefined}
+      tabIndex={link ? 0 : undefined}
+      onKeyDown={(e) => {
+        if (link && (e.key === "Enter" || e.key === " ")) {
+          e.preventDefault();
+          handleClick();
+        }
+      }}
     >
       <div className="project-card-image-wrap">
         <img src={image} alt={title} className="project-card-image" />
