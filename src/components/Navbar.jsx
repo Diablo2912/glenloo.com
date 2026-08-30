@@ -6,7 +6,7 @@ const LINKS = [
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
   { label: "Contact", href: "#contact" },
-  { label: "Resume", href: "#resume" },
+  { label: "Resume", href: "/resume/GlenLoo_Resume.pdf" }
 ];
 
 export default function Navbar() {
@@ -73,9 +73,9 @@ export default function Navbar() {
   // Scrollspy: highlight whichever section is actually in view,
   // not just whichever link was last clicked.
   useEffect(() => {
-    const sectionEls = LINKS.map((link) =>
-      document.querySelector(link.href)
-    ).filter(Boolean);
+    const sectionEls = LINKS.filter((link) => link.href.startsWith("#"))
+      .map((link) => document.querySelector(link.href))
+      .filter(Boolean);
 
     if (!sectionEls.length) return;
 
@@ -137,8 +137,12 @@ export default function Navbar() {
                 key={link.label}
                 ref={(el) => (linkRefs.current[idx] = el)}
                 href={link.href}
+                target={link.href.startsWith("#") ? undefined : "_blank"}
+                rel={link.href.startsWith("#") ? undefined : "noopener noreferrer"}
                 onMouseEnter={() => setHoverIdx(idx)}
-                onClick={() => handleNavClick(idx)}
+                onClick={() =>
+                  link.href.startsWith("#") && handleNavClick(idx)
+                }
                 className={`nb-link ${idx === activeIdx ? "nb-link-active" : ""}`}
               >
                 {link.label}
@@ -188,8 +192,10 @@ export default function Navbar() {
             <a
               key={link.label}
               href={link.href}
+              target={link.href.startsWith("#") ? undefined : "_blank"}
+              rel={link.href.startsWith("#") ? undefined : "noopener noreferrer"}
               onClick={() => {
-                handleNavClick(idx);
+                if (link.href.startsWith("#")) handleNavClick(idx);
                 setMobileOpen(false);
               }}
               className={`nb-mobile-link ${idx === activeIdx ? "nb-mobile-link-active" : ""}`}
