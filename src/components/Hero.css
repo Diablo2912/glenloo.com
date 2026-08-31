@@ -14,6 +14,7 @@
   max-width: 42rem;
   margin: 0 auto;
   text-align: center;
+  will-change: filter, opacity, transform;
 }
 
 .hero-eyebrow {
@@ -130,6 +131,7 @@
   transform: translateX(-50%);
   display: inline-flex;
   animation: hero-scroll-bounce 2s ease-in-out infinite;
+  will-change: opacity;
 }
 
 .hero-scroll-mouse {
