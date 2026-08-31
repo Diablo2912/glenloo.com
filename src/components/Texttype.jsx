@@ -5,6 +5,7 @@ import "./TextType.css";
  * TextType
  * Cycles through an array of strings with a typewriter effect:
  * types each string out, pauses, deletes it, then moves to the next.
+ * If only one string is given, types it once and leaves it (no loop).
  *
  * Props:
  * - text: string[]            words/phrases to cycle through
@@ -26,6 +27,8 @@ export default function TextType({
   const [displayed, setDisplayed] = useState("");
   const [phase, setPhase] = useState("typing"); // typing | pausing | deleting
 
+  const singleWord = text.length === 1;
+
   useEffect(() => {
     if (!text.length) return;
 
@@ -37,9 +40,10 @@ export default function TextType({
         timeout = setTimeout(() => {
           setDisplayed(current.slice(0, displayed.length + 1));
         }, typingSpeed);
-      } else {
+      } else if (!singleWord) {
         timeout = setTimeout(() => setPhase("pausing"), pauseDuration);
       }
+      // singleWord: fully typed, do nothing further
     } else if (phase === "pausing") {
       timeout = setTimeout(() => setPhase("deleting"), 0);
     } else if (phase === "deleting") {
@@ -58,7 +62,7 @@ export default function TextType({
     }
 
     return () => clearTimeout(timeout);
-  }, [displayed, phase, wordIndex, text, typingSpeed, deletingSpeed, pauseDuration, loop]);
+  }, [displayed, phase, wordIndex, text, typingSpeed, deletingSpeed, pauseDuration, loop, singleWord]);
 
   return (
     <span className={`text-type ${className}`}>

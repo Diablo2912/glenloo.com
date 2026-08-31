@@ -13,7 +13,7 @@ export default function Hero() {
           <br />
           <TextType
             text={rotating_words}
-            typingSpeed={80}
+            typingSpeed={100}
             deletingSpeed={45}
             pauseDuration={1400}
             className="hero-rotator"
