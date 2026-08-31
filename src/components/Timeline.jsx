@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import "./Timeline.css";
 import { experience } from "../constants";
 
@@ -5,6 +6,7 @@ import { experience } from "../constants";
  * Timeline
  * Vertical, alternating-side timeline with a center line, circular
  * logo markers, and a date label beside each marker.
+ * Rows fade/slide into view on scroll using IntersectionObserver.
  *
  * Props:
  * - items: Array<{
@@ -26,35 +28,71 @@ export default function Timeline({ items = experience }) {
         {items.map((item, idx) => {
           const cardOnLeft = idx % 2 === 0;
           return (
-            <div className="tl-row" key={`${item.org}-${idx}`}>
-              <div className="tl-col tl-col-left">
-                {cardOnLeft ? (
-                  <TimelineCard item={item} align="left" />
-                ) : (
-                  <TimelinePeriod period={item.period} align="left" />
-                )}
-              </div>
-
-              <div className="tl-marker-col">
-                <div className="tl-marker">
-                  {item.logo ? (
-                    <img src={item.logo} alt="" className="tl-marker-img" />
-                  ) : (
-                    <span className="tl-marker-initials">{item.initials}</span>
-                  )}
-                </div>
-              </div>
-
-              <div className="tl-col tl-col-right">
-                {cardOnLeft ? (
-                  <TimelinePeriod period={item.period} align="right" />
-                ) : (
-                  <TimelineCard item={item} align="right" />
-                )}
-              </div>
-            </div>
+            <TimelineRow
+              key={`${item.org}-${idx}`}
+              item={item}
+              cardOnLeft={cardOnLeft}
+            />
           );
         })}
+      </div>
+    </div>
+  );
+}
+
+function TimelineRow({ item, cardOnLeft }) {
+  const rowRef = useRef(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const node = rowRef.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.unobserve(node);
+        }
+      },
+      { threshold: 0.25, rootMargin: "0px 0px -60px 0px" }
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={rowRef}
+      className={`tl-row ${visible ? "tl-row-visible" : ""} ${
+        cardOnLeft ? "tl-row-card-left" : "tl-row-card-right"
+      }`}
+    >
+      <div className="tl-col tl-col-left">
+        {cardOnLeft ? (
+          <TimelineCard item={item} align="left" />
+        ) : (
+          <TimelinePeriod period={item.period} align="left" />
+        )}
+      </div>
+
+      <div className="tl-marker-col">
+        <div className="tl-marker">
+          {item.logo ? (
+            <img src={item.logo} alt="" className="tl-marker-img" />
+          ) : (
+            <span className="tl-marker-initials">{item.initials}</span>
+          )}
+        </div>
+      </div>
+
+      <div className="tl-col tl-col-right">
+        {cardOnLeft ? (
+          <TimelinePeriod period={item.period} align="right" />
+        ) : (
+          <TimelineCard item={item} align="right" />
+        )}
       </div>
     </div>
   );
