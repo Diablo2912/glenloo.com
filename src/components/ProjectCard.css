@@ -45,7 +45,7 @@
   font-weight: 700;
   letter-spacing: 0.03em;
   color: #111815;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */ /* Make title all uppercase */
   margin: 0 0 0.75rem;
 }
 

@@ -56,7 +56,7 @@ export default function ProjectCard({
       const py = (y / rect.height) * 100;
       setGlareStyle({
         opacity: 1,
-        background: `radial-gradient(circle at ${px}% ${py}%, rgba(255,255,255,0.14), transparent 60%)`,
+        background: `radial-gradient(circle at ${px}% ${py}%, rgba(255,255,255,0.14), transparent 30%)`, // Percentage controls the hover glare size
       });
     }
   };
