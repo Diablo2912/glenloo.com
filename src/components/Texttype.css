@@ -1,7 +1,7 @@
 .text-type {
-  display: inline-block;
-  white-space: nowrap;
+  display: inline;
   color: #535353;
+  word-break: break-word;
 }
 
 .text-type-cursor {
@@ -15,12 +15,12 @@
 }
 
 /* Dark Mode */
-.dark .text-type{
-  color: #C2C8C5;
+.dark .text-type {
+  color: #c2c8c5;
 }
 
-.text-type-cursor {
-  background: #C2C8C5;;
+.dark .text-type-cursor {
+  background: #c2c8c5;
 }
 
 @keyframes text-type-blink {

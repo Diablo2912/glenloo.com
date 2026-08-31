@@ -327,4 +327,16 @@
   .tl-card-period {
     display: block;
   }
+
+  /* Override left/right slide-in — mobile is a single column,
+     so every card should only fade/slide up, never sideways. */
+  .tl-row.tl-row-card-left .tl-card,
+  .tl-row.tl-row-card-right .tl-card {
+    transform: translateY(24px);
+  }
+
+  .tl-row-visible.tl-row-card-left .tl-card,
+  .tl-row-visible.tl-row-card-right .tl-card {
+    transform: translateY(0);
+  }
 }
