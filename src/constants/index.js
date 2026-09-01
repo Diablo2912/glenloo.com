@@ -1,7 +1,12 @@
+import cropzyImg from "../assets/images/cropzy.png";
+import IoTImg from "../assets/images/iot.png";
+// import homelabImg from "../assets/images/homelab.png";
+
+
 // Text Type
 export const rotating_words = [
   "Infocomm & Security Student",
-  "Cybersecurity Engineer",
+  "Cybersecurity Enthusiast",
   "Full-Stack Developer",
 ];
 
@@ -14,10 +19,12 @@ export const experience = [
     org: "United Overseas Bank",
     period: "Mar 2026 - Present",
     bullets: [
-      "Developed dashboards using `React.js` , `Django`.",
-      "Engineered and maintained malware unpacking, deobfuscation, and decompilation tools, reducing manual analysis time by over **10x**.",
+      "Develop dashboards using `React.js` , `Django`.",
+      // "Engineered and maintained malware unpacking, deobfuscation, and decompilation tools, reducing manual analysis time by over **10x**.",
+      "Design and maintain monitoring dashboards to visualise system health, capacity, and performance KPI",
+      "Enhance existing dashboards for better visibility and usability",
       "Automate repetitive monitoring tasks using `Python`. ",
-      "Enhance existing dashboards for better visibility and usability "
+      "Work with stakeholders to understand dashboard requirements "
     ],
   },
   {
@@ -26,8 +33,8 @@ export const experience = [
     org: "Nanyang Polytechnic",
     period: "Mar 2025 - Mar 2026",
     bullets: [
-      "Awards: Director's List Y1 S2 - Y2 S2",
-      "Drove R&D for proactive cybersecurity solutions to safeguard client infrastructure.",
+      "Awards: Director's List Y1 S2, Y2 S1, Y2 S2. Edusave Certificate of Academic Achievement 2025.",
+      "NYP InfoSec Club Subcommittee.",
     ],
   },
   {
@@ -36,12 +43,10 @@ export const experience = [
     org: "Chua Chu Kang Secondary School",
     period: "Aug 2024 - Feb 2025",
     bullets: [
-      "CGPA: **4.0/4.0** (Top in cohort)",
-      "Awards: CSIT Gold Medal & Prize, Group-IB Prize",
-      "Scholarship: DSTA Polytechnic Digital Scholar",
-      "Leadership: President, NullSec: Led CTFs, cybersecurity workshops, and YCEP in collaboration with CSA.",
-      "Competitions: WorldSkills Singapore 2025 — 3rd; CDDC 2024 — 3rd; GreyCTF 2025 — 6th",
-      "Represented Singapore at the [Global Cybersecurity Camp 2025](https://example.com/gcc-2025), winning the \"Best Project\" award",
+      "CCA: Badminton",
+      "Chairperson for Values in Action (VIA) Projects in Badminton CCA (2020-2023)",
+      "Awards: Edusave Good Progress Award (2023)",
+      // "Represented Singapore at the [Global Cybersecurity Camp 2025](https://example.com/gcc-2025), winning the \"Best Project\" award",
     ],
   },
 ];
@@ -50,25 +55,25 @@ export const experience = [
 // Project
 export const projects = [
   {
-    image: "/images/project-one.png",
-    title: "Project One",
-    description: "A short description of project one.",
-    tags: ["react", "node", "mongodb"],
-    link: "https://github.com/yourname/project-one",
+    image: cropzyImg,
+    title: "Cropzy",
+    description: "An all-in-one agricultural management platform designed to optimize  productivity while prioritizing sustainbility, built with Python Flask and featuring product management, crop calendars, and secure authentication with JWT and Face ID-based MFA.",
+    tags: ["Python", "Flask", "MySQL"],
+    link: "https://github.com/Diablo2912/NYP-Y2-S1-System-Security-Project",
   },
   {
-    image: "/images/project-two.png",
-    title: "Project Two",
-    description: "A short description of project two.",
-    tags: ["nextjs", "tailwind"],
-    link: "https://project-two.example.com",
+    image: IoTImg,
+    title: "Smart Gym",
+    description: "Smart Gym for Schools is an IoT-based gym management system designed to streamline and enhance fitness facility operations. Built using C# and using Raspberry Pi with Features such as Attendance Analytics, Credit Score, Email & SMS Notifications, Active Session, Account Management.",
+    tags: ["Raspberry Pi", "C#", "WinForm", "MySQL"],
+    link: "https://github.com/Diablo2912/NYP-Y2-S2-IoT-Project",
   },
   {
     image: "/images/project-three.png",
-    title: "Project Three",
-    description: "A short description of project three.",
-    tags: ["python", "flask"],
-    link: "https://github.com/yourname/project-three",
+    title: "Homelab",
+    description: "More coming soon.",
+    tags: ["Raspberry Pi", "Homelab"],
+    link: "https://app.notion.com/p/Homelab-3cce0722d853805ca127df44046bd519?source=copy_link",
   },
 ];
 
@@ -76,19 +81,19 @@ export const projects = [
 export const techStack = [
   {
     category: "Languages",
-    items: ["Python", "JavaScript", "TypeScript", "C", "Bash"],
+    items: ["Python", "JavaScript","C#"],
   },
   {
     category: "Frameworks & Libraries",
-    items: ["React", "Vue.js", "Node.js", "Express"],
+    items: ["React",  "Django", "Flask", "ASP.NET", "WinForm"],
   },
   {
     category: "Security & Tools",
-    items: ["Docker", "Burp Suite", "Wireshark", "Ghidra", "Kong API Gateway"],
+    items: ["Docker", "Cisco Packet Tracer", "Windows", "Linux"],
   },
   {
     category: "Cloud & DevOps",
-    items: ["AWS", "Git", "Linux", "CI/CD"],
+    items: ["Cloudflare", "Git", "Linux", "CI/CD"],
   },
 ];
 
