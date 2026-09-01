@@ -1,0 +1,41 @@
+.ft {
+  width: 100%;
+  background: #0b0e0d;
+  border-top: 1px solid rgba(232, 234, 233, 0.08);
+  padding: 3rem 1.5rem; /*Vertical - Horizontal padding*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: "JetBrains Mono", "Cascadia Mono", Consolas, monospace;
+}
+
+.ft-line {
+  font-size: 14px;
+  color: #9ba39f;
+  margin: 0 0 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.ft-tag {
+  color: #9ba39f;
+}
+
+.ft-heart {
+  color: #f04747;
+  font-size: 13px;
+}
+
+.ft-name {
+  color: #4ade80;
+  font-weight: 400;
+}
+
+.ft-copyright {
+  font-size: 12.5px;
+  color: #6b7570;
+  margin: 0;
+}

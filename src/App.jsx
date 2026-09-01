@@ -6,6 +6,7 @@ import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import  TechStack from "./components/TechStack";
 import Awards from "./components/Awards";
+import Footer from "./components/Footer"
 
 function App() {
   return (
@@ -23,6 +24,8 @@ function App() {
       <Awards/>
 
       <Contact/>
+
+      <Footer/>
     </>
   );
 }
