@@ -6,8 +6,8 @@ import "./Awards.css";
  * Awards
  * Displays a list as a Windows Command Prompt style window
  * (title bar with minimize/maximize/close, blinking cursor prompt).
- * Animates into view on scroll: window fades/slides up, then each
- * entry prints in sequence like real terminal output.
+ * The whole window flies in on scroll; contents appear together
+ * once it's in place.
  *
  * Props:
  * - items: string[]   Defaults to `awards` from constants if not passed.
@@ -62,20 +62,11 @@ export default function Awards({ items = awards, path = "C:\\Users\\glen\\awards
             <span className="aw-prompt">{path}&gt;</span> dir /b awards
           </p>
           {items.map((item, i) => (
-            <p
-              className={`aw-line aw-entry ${visible ? "aw-entry-visible" : ""}`}
-              style={{ transitionDelay: visible ? `${0.3 + i * 0.12}s` : "0s" }}
-              key={i}
-            >
+            <p className="aw-line aw-entry" key={i}>
               {item}
             </p>
           ))}
-          <p
-            className="aw-line aw-final-prompt"
-            style={{
-              transitionDelay: visible ? `${0.3 + items.length * 0.12}s` : "0s",
-            }}
-          >
+          <p className="aw-line aw-final-prompt">
             <span className="aw-prompt">{path}&gt;</span>
             <span className="aw-cursor" aria-hidden="true" /> {/* text cursor */}
           </p>
